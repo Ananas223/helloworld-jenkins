@@ -6,7 +6,12 @@ pipeline {
     stages{
         stage("task"){
             steps{
-                sh 'python main.py'
+                '''
+                    python -m venv .venv
+                    . .venv/bin/activate
+                    pip install -r requirements.txt
+                    nose2
+                '''
             }
         }
     }
